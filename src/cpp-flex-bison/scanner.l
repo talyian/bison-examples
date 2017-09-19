@@ -5,14 +5,17 @@
 
 %%
 
-[0-9]+     { yylval = atoi(yytext); return NUMBER; }
-[+*/-]     { yylval = *yytext; return OP; }
+[0-9]+     { atoi(yytext); return yy::parser::token::NUMBER; }
+[+*/-]     { *yytext; return yy::parser::token::OP; }
 [ \t]      { }
 .          { return *yytext; }
 
 %%
 
 int main() {
-  return yyparse();
+  yyFlexLexer F();
+  F.yylex();
+  yy::parser P;
+  P.parse();
 }
 

@@ -1,7 +1,10 @@
+%skeleton "lalr1.cc"
+
 %{
-#include <stdio.h>
-int  yylex();
-void yyerror(const char * msg) { printf("error %s", msg); }  
+#include <iostream>
+#include <string>
+#include <cstdio>
+int yylex(void * a);
 %}
 
 %token OP
@@ -9,7 +12,7 @@ void yyerror(const char * msg) { printf("error %s", msg); }
 
 %%
 
-result : expr { printf("%d\n", $1); }
+result : expr { std::cout << $1 << std::endl; }
 
 expr   : NUMBER { $$ = $1; }
        | expr OP NUMBER {
@@ -21,3 +24,7 @@ expr   : NUMBER { $$ = $1; }
 	   }
          }
 %%
+
+void yy::parser::error(const std::string & msg) {
+  std::cout << msg << std::endl;
+}

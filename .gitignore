@@ -2,3 +2,8 @@ a.out
 lex.yy.c
 parser.tab.c
 parser.tab.h
+stack.hh
+parser.tab.cc
+parser.tab.hh
+parser.tab.o
+lex.yy.o
