@@ -1,3 +1,3 @@
 # Bison Examples
 
-Some basic examples of Flex/Bison grammars.
+Because I can never remember which combination of options and lex-params to use.
