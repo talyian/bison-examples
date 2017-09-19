@@ -8,8 +8,8 @@
 
 %%
 
-[0-9]+     { yylval->number = atoi(yytext); return yy::parser::token::NUMBER; }
-[+*/-]     { yylval->op = *yytext; return yy::parser::token::OP; }
+[0-9]+     { yylval->build(atoi(yytext)); return yy::parser::token::NUMBER; }
+[+*/-]     { yylval->build(*yytext); return yy::parser::token::OP; }
 [ \t]      { }
 .          { return *yytext; }
 

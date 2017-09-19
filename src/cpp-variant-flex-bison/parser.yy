@@ -1,26 +1,21 @@
 %skeleton "lalr1.cc"
+%define api.value.type variant
 
 %{
 #include <iostream>
 #include <string>
 #include <cstdio>
-%}
 
-%union {
-  int number;
-  char op;     
-}
+// No, it doesn't make sense to me why I'm doing this
+#include "parser.tab.hh"
+int yylex(yy::parser::semantic_type * a);
+%}
 
 %token OP
 %token NUMBER
 
-%type <number> NUMBER expr
-%type <op> OP
-
-%{
-// this declaration needs to be after the %union so semantic_type is defined
-int yylex(yy::parser::semantic_type * a);
-%}
+%type <int32_t> NUMBER expr
+%type <char> OP
 
 %%
 
