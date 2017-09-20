@@ -4,6 +4,7 @@
 #define YYSTYPE yy::parser::semantic_type
 %}
 
+/* This enables bison to pass a YYSTYPE as yylval. The builtin semantic_type union is useful */
 %option bison-bridge
 
 %%
